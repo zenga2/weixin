@@ -1,0 +1,32 @@
+1. koa的洋葱模型
+   1) 以await next()为分界线,前半部分是先注册先执行，后半部分是先注册后执行
+   2) 如果不调用next()就意味着执行链到此结束，开始后半部分的执行(从里到外依次返回)
+   e.g.
+   const Koa = require('koa')
+   const app = new Koa()
+
+   app.use(async (ctx, next) => {
+     console.log('before one')
+     await next()
+     console.log('after one')
+   })
+
+   app.use(async (ctx) => {
+     console.log('before two')
+     ctx.body = 'Hello World!'
+     console.log('after two')
+   })
+
+   app.use(async (ctx) => {
+     console.log('before three')
+     ctx.body = 'xxxx'
+     console.log('after three')
+   })
+
+   app.listen(3000)
+
+   // 日志如下
+   before one
+   before two
+   after two
+   after one
