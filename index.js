@@ -1,22 +1,18 @@
+const sha1 = require('sha1')
 const Koa = require('koa')
 const app = new Koa()
+const token = 'http://47.106.77.181'
 
 app.use(async (ctx, next) => {
-  console.log('before one')
-  await next()
-  console.log('after one')
+  const {signature, timestamp, nonce, echostr} = ctx.request.query
+  const str = [token, timestamp, nonce].sort().join('')
+  const strAfterSha1 = sha1(str)
+
+  if (strAfterSha1 === signature) {
+    ctx.response.body = echostr
+  } else {
+    ctx.response.body = ''
+  }
 })
 
-app.use(async (ctx) => {
-  console.log('before two')
-  ctx.body = 'Hello World!'
-  console.log('after two')
-})
-
-app.use(async (ctx) => {
-  console.log('before three')
-  ctx.body = 'xxxx'
-  console.log('after three')
-})
-
-app.listen(3000)
+app.listen(80)
