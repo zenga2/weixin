@@ -1,7 +1,7 @@
 const sha1 = require('sha1')
 const Koa = require('koa')
 const app = new Koa()
-const token = 'http://47.106.77.181'
+const token = 'zengjunweixin'
 
 app.use(async (ctx, next) => {
   const {signature, timestamp, nonce, echostr} = ctx.request.query
