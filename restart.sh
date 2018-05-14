@@ -3,4 +3,6 @@
 kill `pidof node`
 git fetch origin master
 git merge origin master
-npm run start
+nohup node src/main.js &
+sleep 10
+
