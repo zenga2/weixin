@@ -1,5 +1,6 @@
 const sha1 = require('sha1')
-const token = 'zengjunweixin'
+const config = require('../config')
+const token = config.weixin.token
 
 module.exports = () => async (ctx, next) => {
   const {request, response} = ctx
