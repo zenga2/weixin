@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-git fetch origin master
-git merge origin master
+git fetch origin
+git merge origin/master
