@@ -25,11 +25,14 @@ async function replyMessage(request, response, ctx) {
     encoding: 'utf8'
   })
 
+  console.log('xmlText', xmlText)
+
   // 该方法是同步的
   parseString(xmlText, {trim: true}, (err, result) => {
     if (err) throw err
 
     const msgData = formateWeChatMsg(result)
+    console.log('msgData', msgData)
     response.body = `<xml>
             <ToUserName><![CDATA[${msgData.FromUserName}]]></ToUserName>
             <FromUserName><![CDATA[${msgData.ToUserName}]]></FromUserName>
