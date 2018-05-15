@@ -1,5 +1,7 @@
-const login = require('../action/login')
+const weChatAction = require('../action/weChat')
+const loginAction = require('../action/login')
 
 module.exports = {
-  '/login': login
+  '/': weChatAction,
+  '/login': loginAction
 }

@@ -1,3 +1,5 @@
 module.exports = (request, response) => {
-  response.body = 'Welcome you!'
+  response.body = {
+    msg: 'Welcome you!'
+  }
 }

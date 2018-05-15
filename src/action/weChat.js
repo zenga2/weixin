@@ -2,19 +2,20 @@ const sha1 = require('sha1')
 const config = require('../config')
 const token = config.weixin.token
 
-module.exports = () => async (ctx, next) => {
-  const {request, response} = ctx
+module.exports = (request, response) => {
   const {signature, timestamp, nonce, echostr} = request.query
 
+  // 验证微信服务器
   if (signature && timestamp && nonce && echostr) {
     const str = [token, timestamp, nonce].sort().join('')
     const strAfterSha1 = sha1(str)
-    if (strAfterSha1 === signature) {
-      response.body = echostr
-    } else {
-      response.status = 403
-    }
+    response.body = strAfterSha1 === signature ? echostr : ''
   } else {
-    await next()
+    replyMessage(request, response)
   }
+}
+
+
+function replyMessage(request, response) {
+
 }
