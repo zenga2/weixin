@@ -41,7 +41,7 @@ async function replyMessage(request, response, ctx) {
             <Content><![CDATA[Hello, ${msgData.Content}]]></Content>
           </xml>`
   })
-
+  console.log(response.body)
 }
 
 function formateWeChatMsg(msgData) {
