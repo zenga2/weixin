@@ -25,6 +25,7 @@ async function replyMessage(request, response, ctx) {
     encoding: 'utf8'
   })
 
+  console.log('headers', ctx.req.headers)
   console.log('xmlText', xmlText)
 
   // 该方法是同步的
