@@ -25,6 +25,4 @@ async function log(msg) {
   fsUitls.writeFile(fPath, text)
 }
 
-log('asdad')
-
 module.exports = {log}
