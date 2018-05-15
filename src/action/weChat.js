@@ -32,11 +32,12 @@ async function replyMessage(request, response, ctx) {
     if (err) throw err
 
     const msgData = formateWeChatMsg(result)
+    const now = Math.round((+new Date()) / 1000)
     console.log('msgData', msgData)
     response.body = `<xml>
             <ToUserName><![CDATA[${msgData.FromUserName}]]></ToUserName>
             <FromUserName><![CDATA[${msgData.ToUserName}]]></FromUserName>
-            <CreateTime>${(+new Date()) / 1000}</CreateTime>
+            <CreateTime>${now}</CreateTime>
             <MsgType><![CDATA[text]]></MsgType> 
             <Content><![CDATA[Hello, ${msgData.Content}]]></Content>
           </xml>`
