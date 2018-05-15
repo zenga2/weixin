@@ -7,7 +7,7 @@ module.exports = opts => {
     if (!keys.includes(path)) {
       response.status = 404
     } else {
-      await  opts[path](request, response)
+      await opts[path](request, response)
     }
   }
 }

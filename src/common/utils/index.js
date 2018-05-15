@@ -17,7 +17,14 @@ function each(obj, fn) {
   }
 }
 
+function objToString(query) {
+  return Object.keys(query).reduce((result, prop) => {
+    return `${result} ${prop}=${query[prop]},`
+  }, 'param:').slice(0, -1)
+}
+
 module.exports = {
   ...fsUtils,
-  each
+  each,
+  objToString
 }
