@@ -36,7 +36,7 @@ async function replyMessage(request, response, ctx) {
     response.body = `<xml>
             <ToUserName><![CDATA[${msgData.FromUserName}]]></ToUserName>
             <FromUserName><![CDATA[${msgData.ToUserName}]]></FromUserName>
-            <CreateTime>${+new Date()}</CreateTime>
+            <CreateTime>${(+new Date()) / 1000}</CreateTime>
             <MsgType><![CDATA[text]]></MsgType> 
             <Content><![CDATA[Hello, ${msgData.Content}]]></Content>
           </xml>`
