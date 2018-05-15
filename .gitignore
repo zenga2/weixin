@@ -1,7 +1,7 @@
 .DS_Store
 .idea/
 node_modules/
-w_log/
+w_logs/
 package-lock.json
 npm-debug.log*
 yarn-debug.log*
