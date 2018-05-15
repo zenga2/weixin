@@ -1,7 +1,7 @@
 const axios = require('axios')
 const config = require('../../config')
 const {objToString} = require('../utils')
-const {loadJsonData, saveJsonDate} = require('../utils/localDataUtils')
+const {loadJsonData, saveJsonDate} = require('../../plugins/localData')
 
 const filename = 'wechat.json'
 
@@ -43,7 +43,3 @@ async function queryAccessToken() {
 module.exports = {
   getAccessToken
 }
-
-getAccessToken().then(s => {
-  console.log(s)
-})

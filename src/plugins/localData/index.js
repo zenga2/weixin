@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const fsUtils = require('../utils/fsUtils')
+const fsUtils = require('../../common/utils/fsUtils')
 const config = require('../../config')
 
 const dataRootDir = path.join(config.projectRootDir, 'w_data')
