@@ -5,7 +5,7 @@ const config = require('../../config')
 
 const dataRootDir = path.join(config.projectRootDir, 'w_data')
 
-// 检测w_data目录是否存在, 不存在就创建一个
+// If the w_data directory does not exist, create it
 if (!fs.existsSync(dataRootDir)) {
   fs.mkdirSync(dataRootDir)
 }
@@ -26,12 +26,12 @@ async function saveJsonData(data, filename) {
   await fsUtils.writeFile(fPath, JSON.stringify(data))
 }
 
-// 注意是浅拷贝
-async function updateJsonDate(updateData, filename) {
+// Note: not deep copy, just shallow copy
+async function updateJsonData(updateData, filename) {
   const newData = Object.assign(await loadJsonData(filename), updateData)
   await saveJsonData(newData, filename)
 }
 
 module.exports = {
-  loadJsonData, saveJsonData, updateJsonDate
+  loadJsonData, saveJsonData, updateJsonData
 }

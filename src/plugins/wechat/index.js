@@ -2,7 +2,7 @@ const axios = require('axios')
 const sha1 = require('sha1')
 const config = require('../../config/index')
 const {objToString} = require('../../utils/index')
-const {loadJsonData, updateJsonDate} = require('../localData/index')
+const {loadJsonData, updateJsonData} = require('../localData/index')
 
 const filename = 'wechat.json'
 
@@ -17,7 +17,7 @@ async function getAccessToken() {
     accessToken = access_token
     // 提前五分钟重新请求
     accessTokenExpires = (+new Date()) + (expires_in - 300) * 1000
-    await updateJsonDate({accessToken, accessTokenExpires}, filename)
+    await updateJsonData({accessToken, accessTokenExpires}, filename)
   }
 
   return accessToken
@@ -62,7 +62,7 @@ async function getJsApiTicket() {
     const {ticket, expires_in} = await queryJsApiTicket()
     jsApiTicket = ticket
     jsApiTicketExpires = (+new Date()) + (expires_in - 300) * 1000
-    await updateJsonDate({jsApiTicket, jsApiTicketExpires}, filename)
+    await updateJsonData({jsApiTicket, jsApiTicketExpires}, filename)
   }
 
   return data
