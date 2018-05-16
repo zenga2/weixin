@@ -1,5 +1,5 @@
 const {log} = require('../plugins/log')
-const {objToString} = require('../common/utils')
+const {objToString} = require('../utils')
 
 module.exports = () => async (ctx, next) => {
   const {path, method, query, href} = ctx.request

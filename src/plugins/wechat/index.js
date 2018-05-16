@@ -1,7 +1,7 @@
 const axios = require('axios')
-const config = require('../../config')
-const {objToString} = require('../utils')
-const {loadJsonData, saveJsonDate} = require('../../plugins/localData')
+const config = require('../../config/index')
+const {objToString} = require('../../utils/index')
+const {loadJsonData, saveJsonDate} = require('../localData/index')
 
 const filename = 'wechat.json'
 

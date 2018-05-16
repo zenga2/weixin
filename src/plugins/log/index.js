@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
-const fsUitls = require('../../common/utils/fsUtils')
-const dateUtils = require('../../common/utils/dateUtils')
+const fsUitls = require('../../utils/fsUtils')
+const dateUtils = require('../../utils/dateUtils')
 const config = require('../../config')
 
 const logRootDir = path.join(config.projectRootDir, 'w_logs')
