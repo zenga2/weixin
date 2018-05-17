@@ -7,12 +7,11 @@ const {loadJsonData, updateJsonData} = require('../localData/index')
 const filename = 'wechat.json'
 
 async function getAccessToken() {
-  let data = await loadJsonData(filename)
+  let {accessToken, accessTokenExpires} = await loadJsonData(filename)
   const now = +new Date()
-  let accessToken, accessTokenExpires
 
   // 不存在accessToken，或已经失效，就向微信服务请求接口
-  if (!data.accessToken || data.accessTokenExpires < now) {
+  if (!accessToken || accessTokenExpires < now) {
     const {access_token, expires_in} = await queryAccessToken()
     accessToken = access_token
     // 提前五分钟重新请求
@@ -54,18 +53,17 @@ async function getJsApiConfigData(url) {
 }
 
 async function getJsApiTicket() {
-  let data = await loadJsonData(filename)
+  let {jsApiTicket, jsApiTicketExpires} = await loadJsonData(filename)
   const now = +new Date()
-  let jsApiTicket, jsApiTicketExpires
 
-  if (!data.jsApiTicket || data.jsApiTicketExpires < now) {
+  if (!jsApiTicket || jsApiTicketExpires < now) {
     const {ticket, expires_in} = await queryJsApiTicket()
     jsApiTicket = ticket
     jsApiTicketExpires = (+new Date()) + (expires_in - 300) * 1000
     await updateJsonData({jsApiTicket, jsApiTicketExpires}, filename)
   }
 
-  return data
+  return jsApiTicket
 }
 
 async function queryJsApiTicket() {
