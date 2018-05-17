@@ -7,9 +7,6 @@ const token = config.weixin.token
 module.exports = async (request, response, ctx) => {
   const {signature, timestamp, nonce, echostr} = request.query
 
-  console.log(request.ip, request.ips, request.origin, request.originalUrl)
-  console.log(request.url, request.URL)
-
   // 验证微信服务器
   if (signature && timestamp && nonce && echostr) {
     const str = [token, timestamp, nonce].sort().join('')
@@ -28,11 +25,11 @@ async function replyMessage(request, response, ctx) {
     encoding: request.charset
   })
 
-  console.log('xmlText', xmlText)
-
   // 该方法是同步的
   parseString(xmlText, {trim: true}, (err, result) => {
     if (err) throw err
+
+    console.log('xmlText', result)
 
     const msgData = formateWeChatMsg(result)
     const now = Math.round((+new Date()) / 1000)
