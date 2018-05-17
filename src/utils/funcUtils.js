@@ -1,4 +1,4 @@
-const {each} = require('./index')
+const {each} = require('./utils')
 const {includes} = require('./arrayUtils')
 
 function curry(fn, thisArg) {

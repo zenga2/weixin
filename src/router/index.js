@@ -1,7 +1,11 @@
 const weChatAction = require('../action/weChat')
 const loginAction = require('../action/login')
+const queryJsApiConfigDataAction = require('../action/queryJsApiConfigData')
+const queryStaticResourcesAction = require('../action/queryStaticResources')
 
 module.exports = {
   '/': weChatAction,
-  '/login': loginAction
+  '/api/login': loginAction,
+  '/api/queryJsApiConfigData': queryJsApiConfigDataAction,
+  '/static/*': queryStaticResourcesAction,
 }

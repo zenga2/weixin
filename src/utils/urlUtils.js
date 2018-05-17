@@ -1,5 +1,5 @@
 const {isEmptyObj} = require('./typeUtils')
-const {each} = require('./index')
+const {each} = require('./utils')
 
 // 将url中的查询参数解析成对象
 function urlParse(url) {

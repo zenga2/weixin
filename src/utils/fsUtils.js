@@ -1,4 +1,5 @@
 const fs = require('fs')
+const {promiseify} = require('./utils')
 
 function readFile(path, encoding = 'utf8') {
   return new Promise((resolve, reject) => {
@@ -20,5 +21,9 @@ function writeFile(path, data, encoding = 'utf8') {
   })
 }
 
+const getStat = promiseify(fs, 'stat')
 
-module.exports = {readFile, writeFile}
+module.exports = {
+  readFile, writeFile,
+  getStat
+}

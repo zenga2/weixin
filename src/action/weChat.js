@@ -20,9 +20,9 @@ module.exports = async (request, response, ctx) => {
 
 async function replyMessage(request, response, ctx) {
   const xmlText = await getRawBody(ctx.req, {
-    length: ctx.req.headers['content-length'],
+    length: request.length,
     limit: '1mb',
-    encoding: 'utf8'
+    encoding: request.charset
   })
 
   console.log('headers', ctx.req.headers)
@@ -42,6 +42,7 @@ async function replyMessage(request, response, ctx) {
             <MsgType><![CDATA[text]]></MsgType> 
             <Content><![CDATA[Hello, ${msgData.Content}]]></Content>
           </xml>`
+    response.type = 'application/xml; charset=utf-8'
   })
   console.log(response.body)
 }

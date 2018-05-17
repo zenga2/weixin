@@ -1,9 +1,9 @@
 const fs = require('fs')
 const path = require('path')
 const fsUtils = require('../../utils/fsUtils')
-const config = require('../../config')
+const {resolvePath} = require('../../utils/utils')
 
-const dataRootDir = path.join(config.projectRootDir, 'w_data')
+const dataRootDir = resolvePath('w_data')
 
 // If the w_data directory does not exist, create it
 if (!fs.existsSync(dataRootDir)) {

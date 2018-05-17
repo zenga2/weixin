@@ -1,5 +1,6 @@
-const fsUtils = require('./fsUtils')
+const path = require('path')
 const {isArrayLike} = require('./typeUtils')
+const config = require('../config')
 
 function each(obj, fn) {
   if (!obj || !fn) return
@@ -23,8 +24,23 @@ function objToString(query) {
   }, 'param:').slice(0, -1)
 }
 
+function resolvePath(...subPaths) {
+  return path.join(config.projectRootDir, ...subPaths)
+}
+
+function promiseify(obj, prop) {
+  return (...args) => new Promise((resolve, reject) => {
+    obj[prop](...args, (err, result) => {
+      if (err) reject(err)
+
+      resolve(result)
+    })
+  })
+}
+
 module.exports = {
-  ...fsUtils,
   each,
-  objToString
+  objToString,
+  resolvePath,
+  promiseify
 }
