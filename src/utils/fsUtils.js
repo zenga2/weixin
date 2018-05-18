@@ -1,7 +1,7 @@
 const fs = require('fs')
-const {promiseify} = require('./utils')
+const {promisify} = require('./utils')
 
-function readFile(path, encoding = 'utf8') {
+function readFileAsync(path, encoding = 'utf8') {
   return new Promise((resolve, reject) => {
     fs.readFile(path, encoding, (err, data) => {
       if (err) reject(err)
@@ -11,7 +11,7 @@ function readFile(path, encoding = 'utf8') {
   })
 }
 
-function writeFile(path, data, encoding = 'utf8') {
+function writeFileAsync(path, data, encoding = 'utf8') {
   return new Promise((resolve, reject) => {
     fs.writeFile(path, data, encoding, (err) => {
       if (err) reject(err)
@@ -21,9 +21,9 @@ function writeFile(path, data, encoding = 'utf8') {
   })
 }
 
-const getStat = promiseify(fs, 'stat')
+const getStat = promisify(fs, 'stat')
 
 module.exports = {
-  readFile, writeFile,
+  readFileAsync, writeFileAsync,
   getStat
 }

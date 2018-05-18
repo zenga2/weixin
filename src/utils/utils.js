@@ -28,7 +28,7 @@ function resolvePath(...subPaths) {
   return path.join(config.projectRootDir, ...subPaths)
 }
 
-function promiseify(obj, prop) {
+function promisify(obj, prop) {
   return (...args) => new Promise((resolve, reject) => {
     obj[prop](...args, (err, result) => {
       if (err) reject(err)
@@ -42,5 +42,5 @@ module.exports = {
   each,
   objToString,
   resolvePath,
-  promiseify
+  promisify
 }

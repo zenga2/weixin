@@ -21,6 +21,13 @@ function firstLetterToUpperCase(str) {
   })
 }
 
+// 把首字母转为小写
+function firstLetterToLowerCase(str) {
+  return str.replace(/^\w/, function (matchStr) {
+    return matchStr.toLowerCase()
+  })
+}
+
 // 将驼峰格式转为连字符格式
 function camelToHyphen(str) {
   return str.replace(/[A-Z]/g, function (matchStr) {
@@ -40,6 +47,7 @@ function escapeStringRegexp(str) {
 }
 
 module.exports = {
-  padLeft, padRight, firstLetterToUpperCase,
+  padLeft, padRight,
+  firstLetterToUpperCase, firstLetterToLowerCase,
   camelToHyphen, escapeStringRegexp
 }

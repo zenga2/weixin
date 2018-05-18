@@ -14,7 +14,7 @@ async function loadJsonData(filename) {
   const fPath = path.join(dataRootDir, filename)
   return !fs.existsSync(fPath)
     ? {}
-    : JSON.parse(await fsUtils.readFile(fPath))
+    : JSON.parse(await fsUtils.readFileAsync(fPath))
 }
 
 // 如果先data = await loadJsonData, 然后修改data，同时中间进行了异步操作
@@ -23,7 +23,7 @@ async function loadJsonData(filename) {
 // 如果其他函数正好修改了原文件，可能会出现非预期的结果
 async function saveJsonData(data, filename) {
   const fPath = path.join(dataRootDir, filename)
-  await fsUtils.writeFile(fPath, JSON.stringify(data))
+  await fsUtils.writeFileAsync(fPath, JSON.stringify(data))
 }
 
 // Note: not deep copy, just shallow copy

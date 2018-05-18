@@ -1,0 +1,1 @@
+1. 将localData改造成类似localstorage的样子，就是加一个内存缓存模式

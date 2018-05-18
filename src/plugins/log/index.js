@@ -21,9 +21,9 @@ async function log(msg) {
   msg = `${dateUtils.formate(new Date(), 'yyyy-MM-dd hh:mm:ss')}  ${msg}`
   let text = !fs.existsSync(fPath)
     ? msg
-    : await fsUitls.readFile(fPath) + '\n' + msg
+    : await fsUitls.readFileAsync(fPath) + '\n' + msg
 
-  fsUitls.writeFile(fPath, text)
+  fsUitls.writeFileAsync(fPath, text)
 }
 
 module.exports = {log}
