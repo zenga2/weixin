@@ -12,6 +12,5 @@ module.exports = () => async (ctx, next) => {
   // 打印访问日志
   log(`path: ${path}; method: ${method}; ${objToString(query)}; queryUrl: ${href}; from: ${ip}\n${headersToString(ctx.req.headers)}`)
 
-
   await next()
 }

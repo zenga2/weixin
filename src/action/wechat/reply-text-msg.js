@@ -31,7 +31,7 @@ module.exports = async msgData => {
         msgType: 'news',
         articleCount: 2,
         articles: [
-          {title: '', description: '', picUrl: '', url: ''},
+          {title: '上叠福路口', description: '上叠福路口', picUrl: 'http://47.106.77.181/static/images/img.jpg', url: ''},
           {title: '', description: '', picUrl: '', url: ''}
         ]
       }
