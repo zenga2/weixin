@@ -8,7 +8,6 @@ module.exports = async (request, response) => {
   try {
     const stats = await getStat(fPath)
     if (stats.isFile()) {
-      response.type = 'text/html;charset=utf-8'
       response.body = fs.createReadStream(fPath)
       return
     }
