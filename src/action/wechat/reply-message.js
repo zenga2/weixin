@@ -16,6 +16,7 @@ module.exports = async function replyMessage(request, response, ctx) {
   })
 
   const msgData = formateWeChatMsg(await parseString(xmlText, {trim: true}))
+  console.log('msgData', msgData)
   response.body = await replyFnMap[msgData.msgType](msgData)
   response.type = 'application/xml; charset=utf-8'
 }
