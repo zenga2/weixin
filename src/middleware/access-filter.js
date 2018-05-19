@@ -10,7 +10,7 @@ function headersToString(headers) {
 module.exports = () => async (ctx, next) => {
   const {path, method, query, href, ip} = ctx.request
   // 打印访问日志
-  log(`path: ${path}; method: ${method}; ${objToString(query)}; queryUrl: ${href}; from: ${ip}\n ${headersToString(ctx.req.headers)}`)
+  log(`path: ${path}; method: ${method}; ${objToString(query)}; queryUrl: ${href}; from: ${ip}\n${headersToString(ctx.req.headers)}`)
 
 
   await next()
