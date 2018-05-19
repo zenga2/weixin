@@ -1,8 +1,9 @@
 const getRawBody = require('raw-body')
 const {firstLetterToLowerCase} = require('../../utils/stringUtils')
 const {promisify} = require('../../utils/utils')
+const xml2js = require('xml2js')
 
-const parseString = promisify(require('xml2js').parseString)
+const parseString = promisify(xml2js, 'parseString')
 
 const replyFnMap = {
   text: require('./reply-text-msg')
