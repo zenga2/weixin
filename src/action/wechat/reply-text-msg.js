@@ -38,5 +38,8 @@ module.exports = async msgData => {
       break
   }
 
-  return createMsgXml(msgData, data)
+  const replyXML = createMsgXml(msgData, data)
+  console.log(replyXML)
+
+  return replyXML
 }
