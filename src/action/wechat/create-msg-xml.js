@@ -19,7 +19,7 @@ function createMsg(msgData) {
     return result + `<${tagName}>${
       Array.isArray(val)
         ? val.map(item => `<item>${createMsg(item)}</item>`).join('')
-        : `<![CDATA[${val}]]>`
+        : `< ![CDATA[${val}] ]>`
       }</${tagName}>`
   }, '')
 }
