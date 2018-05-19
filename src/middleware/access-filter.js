@@ -3,7 +3,7 @@ const {objToString} = require('../utils/utils')
 
 function headersToString(headers) {
   return Object.keys(headers).reduce((result, key) => {
-    return result + headers[key] + '\n'
+    return result + `${key}: ${headers[key]}'\n'`
   }, '')
 }
 
