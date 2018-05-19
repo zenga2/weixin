@@ -1,5 +1,5 @@
 const sha1 = require('sha1')
-const replyMessage = require('./replyMessage')
+const replyMessage = require('./reply-message')
 
 const config = require('../../config/index')
 const token = config.weixin.token
