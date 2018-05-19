@@ -18,7 +18,7 @@ function createMsg(msgData) {
 
     return result + `<${tagName}>${
       Array.isArray(val)
-        ? val.map(item => `<Item>${createMsg(item)}</Item>`).join('')
+        ? val.map(item => `<item>${createMsg(item)}</item>`).join('')
         : val
       }</${tagName}>`
   }, '')
