@@ -1,4 +1,4 @@
-const weChatAction = require('../action/weChat')
+const weChatAction = require('../action/wechat')
 const loginAction = require('../action/login')
 const queryAccessTokenAction = require('../action/query-access-token')
 const queryJsApiConfigDataAction = require('../action/query-js-api-config-data')
