@@ -1,6 +1,7 @@
 const createMsgXml = require('./create-msg-xml')
 const {upload} = require('../../plugins/wechat')
 
+// todo 生产环境请使用永久素材
 module.exports = async msgData => {
   const {content} = msgData
   let data
