@@ -1,4 +1,5 @@
 const createMsgXml = require('./create-msg-xml')
+const {upload} = require('../../plugins/wechat')
 
 module.exports = async msgData => {
   const {content} = msgData
@@ -11,19 +12,26 @@ module.exports = async msgData => {
       break
     // 回复图片消息
     case '2':
-      data = {msgType: 'image', mediaId: 'L6mDCOI6FVP6xCzNvZa0XXiOrTzXTxjOIwOxDPWl5khdMyFDBUAhbqdZJd9gra-t'}
+      data = {msgType: 'image', mediaId: await upload('static/img.jpg')}
       break
     // 回复语音消息
     case '3':
-      data = {msgType: 'voice', mediaId: 'aMbetVTejyRiCcbs6FXzvAQCaQrq87SExz9zx8gfabGx6FOzM1sby7GMiIfqShy2'}
+      data = {msgType: 'voice', mediaId: await upload('static/music.mp3')}
       break
     // 回复视频消息
     case '4':
-      data = {msgType: 'video', mediaId: '5zH2M32DZ85PKQDzJEOl1uMi6Rogxo0uPasQ0s-i8Q9I8cNWtnNm25mV4fARZKxL', title: '精彩的视频', description: '精彩的视频的描述'}
+      data = {msgType: 'video', mediaId: await upload('static/video.mp4'), title: '精彩的视频', description: '精彩的视频的描述'}
       break
     // 回复音乐消息
     case '5':
-      data = {msgType: 'music', title: '胜似天籁', description: '美妙绝伦的音乐', musicURL: 'aMbetVTejyRiCcbs6FXzvAQCaQrq87SExz9zx8gfabGx6FOzM1sby7GMiIfqShy2', hQMusicUrl: 'aMbetVTejyRiCcbs6FXzvAQCaQrq87SExz9zx8gfabGx6FOzM1sby7GMiIfqShy2', thumbMediaId: 'L6mDCOI6FVP6xCzNvZa0XXiOrTzXTxjOIwOxDPWl5khdMyFDBUAhbqdZJd9gra-t'}
+      data = {
+        msgType: 'music',
+        title: '胜似天籁',
+        description: '美妙绝伦的音乐',
+        musicURL: await upload('static/music.mp3'),
+        hQMusicUrl: await upload('static/music.mp3'),
+        thumbMediaId: await upload('static/img.jpg')
+      }
       break
     // 回复图文消息
     case '6':

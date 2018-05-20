@@ -1,6 +1,7 @@
 const axios = require('axios')
 const sha1 = require('sha1')
 const fs = require('fs')
+const request = require('request-promise-native')
 const config = require('../../config/index')
 const {objToString, resolvePath} = require('../../utils/utils')
 const {loadJsonData, updateJsonData} = require('../localdata/index')
@@ -111,7 +112,25 @@ function createTimestamp() {
   return Math.round((+new Date()) / 1000) + ''
 }
 
+async function upload(type, path) {
+  const result = await request.post({
+    url: 'https://api.weixin.qq.com/cgi-bin/media/upload',
+    formData: {
+      access_token: await getAccessToken(),
+      type,
+      media: fs.createReadStream(resolvePath(path))
+    }
+  })
+
+  if (!result.media_id) {
+    throw new Error(`向微信上传素材不成功: ${objToString(result)}`)
+  }
+
+  return result.media_id
+}
+
 module.exports = {
   getAccessToken,
-  getJsApiConfigData
+  getJsApiConfigData,
+  upload
 }

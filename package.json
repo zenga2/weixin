@@ -14,12 +14,14 @@
   ],
   "author": "zengjun",
   "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.18.0",
     "koa": "^2.5.1",
     "raw-body": "^2.3.3",
+    "request": "^2.86.0",
+    "request-promise-native": "^1.0.5",
     "sha1": "^1.1.1",
     "xml2js": "^0.4.19"
-  }
+  },
+  "devDependencies": {}
 }
