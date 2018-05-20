@@ -122,6 +122,8 @@ async function upload(type, path) {
     }
   })
 
+  console.log(result)
+
   if (!result.media_id) {
     throw new Error(`向微信上传素材不成功: ${objToString(result)}`)
   }
