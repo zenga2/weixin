@@ -119,10 +119,11 @@ async function upload(type, path) {
       access_token: await getAccessToken(),
       type,
       media: fs.createReadStream(resolvePath(path))
-    }
+    },
+    json: true
   })
 
-  console.log(result)
+  console.log(result, result.media_id)
 
   if (!result.media_id) {
     throw new Error(`向微信上传素材不成功: ${objToString(result)}`)
