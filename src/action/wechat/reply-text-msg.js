@@ -35,7 +35,7 @@ module.exports = async msgData => {
         music: {
           title: '胜似天籁',
           description: '美妙绝伦的音乐',
-          musicURL: 'http://47.106.77.181/static/music.mp3',
+          musicUrl: 'http://47.106.77.181/static/music.mp3',
           hQMusicUrl: 'http://47.106.77.181/static/music.mp3',
           thumbMediaId: await upload('image', 'static/img.jpg')
         }
