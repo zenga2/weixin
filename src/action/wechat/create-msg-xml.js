@@ -1,4 +1,5 @@
 const {firstLetterToUpperCase} = require('../../utils/stringUtils')
+const {isPlainObject} = require('../../utils/typeUtils')
 
 module.exports = function createMsgXml(queryMsgData, data) {
   const {toUserName, fromUserName} = queryMsgData
@@ -17,9 +18,8 @@ function createMsg(msgData) {
     const tagName = firstLetterToUpperCase(key)
 
     return result + `<${tagName}>${
-      Array.isArray(val)
-        ? val.map(item => `<item>${createMsg(item)}</item>`).join('')
-        : `<![CDATA[${val}]]>`
+      Array.isArray(val) ? val.map(item => `<item>${createMsg(item)}</item>`).join('') :
+      isPlainObject(val) ? createMsg(val) : `<![CDATA[${val}]]>`
       }</${tagName}>`
   }, '')
 }
