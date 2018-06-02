@@ -10,7 +10,6 @@ module.exports = async (request, response, ctx) => {
 
   if (!isWeChatServer(signature, timestamp, nonce)) {
     return response.body = ''
-
   }
 
   method === 'GET' ? response.body = echostr :
